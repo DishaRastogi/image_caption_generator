@@ -20,11 +20,16 @@ code {
 }
 
 .divtop {
-  height: 100%;
-  width: 100%;
-  padding: 102px;
-  /* background-color: #4CAF50; */
+  width: 75%;
+  min-width: 75vw;
+  min-height: 100vh;
+  padding: 80px 60px;
+  box-sizing: border-box;
+  background: linear-gradient(145deg, #fcaeae, #f8c3a1);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
+
 
 .div1 {
   display: flex;
@@ -38,21 +43,27 @@ code {
 
 .heading {
   background: linear-gradient(to left,
-      rgb(89, 186, 238), rgb(70, 181, 241), rgb(35, 147, 238), rgb(38, 178, 238), rgb(18, 140, 215), rgb(17, 87, 184), rgb(18, 54, 145));
+      rgb(231, 106, 181), rgb(233, 103, 138), rgb(35, 147, 238), rgb(238, 38, 161), rgb(18, 140, 215), rgb(184, 17, 128), rgb(169, 24, 104));
   -webkit-background-clip: text;
   color: transparent;
 }
 
+h1 {
+  margin-left: 100px;
+  font-size: 3.5rem;
+}
+
 /* CSS */
 .btnGenerate {
-  background-color: rgb(46, 162, 251);
+  background-color: #FFF3E2;
   border-radius: 8px;
   /* box-shadow: rgba(0, 0, 0, 0.12) 0 1px 1px; */
-  color: #FFFFFF;
+  color: #000000;
+  font-weight: bold;
   cursor: pointer;
   display: block;
-  font-family: -apple-system, ".SFNSDisplay-Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 17px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
   line-height: 100%;
   margin: 0;
   outline: 0;
@@ -64,11 +75,11 @@ code {
   touch-action: manipulation;
   width: 53%;
   margin-top: 42px;
-  margin-left: 59px;
+  margin-left: 200px;
 }
 
 .btnGenerate:hover {
-  background-color: rgb(99, 65, 248);
+  background-color: #f5c507;
 }
 
 /* ----------- Result page ----------- */
@@ -78,8 +89,7 @@ code {
   align-items: center;
   justify-content: center;
   height: 100vh;
-
-  background-color: #3a2d70;
+  width: 100vw;
 }
 
 .result-window {
@@ -137,13 +147,26 @@ code {
 }
 
 .text-to-speech-btn {
-  background-color: #4CAF50;
-  color: white;
+  background-color: #FFF3E2;
+  font-weight: bold;
+  color: rgb(0, 0, 0);
   padding: 10px 20px;
-  border: none;
+  border: 2px solid #000000;
+  /* Add your preferred border color */
   border-radius: 5px;
   margin: 10px;
   cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.text-to-speech-btn:hover {
+  background: #f5c507;
+  background-image: -webkit-linear-gradient(top, #f5c507, #f5c507);
+  background-image: -moz-linear-gradient(top, #f5c507, #f5c507);
+  background-image: -ms-linear-gradient(top, #f5c507, #f5c507);
+  background-image: -o-linear-gradient(top, #f5c507, #f5c507);
+  background-image: linear-gradient(to bottom, #f5c507, #f5c507);
+  text-decoration: none;
 }
 
 .translate-btn {
@@ -182,6 +205,7 @@ code {
   padding: 10px 40px 10px 40px;
   text-decoration: none;
 }
+
 .btm:hover {
   background: #30e3cb;
   background-image: -webkit-linear-gradient(top, #30e3cb, #2bc4ad);
@@ -193,7 +217,7 @@ code {
 }
 
 /* -------------- choose file -------------- */
-.result-logout{
+.result-logout {
   background-image: -webkit-linear-gradient(top, #FFF3E2, #FFE5CA);
   background-image: -moz-linear-gradient(top, #FFF3E2, #FFE5CA);
   background-image: -ms-linear-gradient(top, #FFF3E2, #FFE5CA);
@@ -203,23 +227,24 @@ code {
   -moz-border-radius: 8;
   border-radius: 8px;
   font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
   color: #7B2869;
   padding: 6px 18px;
   cursor: pointer;
 }
 
-.result-logout:hover{
-  background: #30e3cb;
-  background-image: -webkit-linear-gradient(top, #30e3cb, #2bc4ad);
-  background-image: -moz-linear-gradient(top, #30e3cb, #2bc4ad);
-  background-image: -ms-linear-gradient(top, #30e3cb, #2bc4ad);
-  background-image: -o-linear-gradient(top, #30e3cb, #2bc4ad);
-  background-image: linear-gradient(to bottom, #30e3cb, #2bc4ad);
+.result-logout:hover {
+  background: #f5c507;
+  background-image: -webkit-linear-gradient(top, #f5c507, #f5c507);
+  background-image: -moz-linear-gradient(top, #f5c507, #f5c507);
+  background-image: -ms-linear-gradient(top, #f5c507, #f5c507);
+  background-image: -o-linear-gradient(top, #f5c507, #f5c507);
+  background-image: linear-gradient(to bottom, #f5c507, #f5c507);
   text-decoration: none;
 }
 
 /* -----------------------Extra button ----------------- */
-.extra-button{
+.extra-button {
   display: flex;
   flex-direction: row;
 }
