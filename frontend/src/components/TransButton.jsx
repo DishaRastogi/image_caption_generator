@@ -1,9 +1,6 @@
-import React from 'react';
-import { useEffect, useState, useRef } from 'react';
-
+import React, { useEffect, useState, useRef } from 'react';
 
 const TransButton = ({ callback, cap }) => {
-
     const [languageOptions, setLanguageOptions] = useState([
         { code: "en", name: "English" },
         { code: "hi", name: "Hindi" },
@@ -14,50 +11,45 @@ const TransButton = ({ callback, cap }) => {
         { code: "ja", name: "Japanese" }
     ]);
     const [to, setTo] = useState('en');
-    // const [from, setFrom] = useState('en');
-    // const [input, setInput] = useState('');
-    // const [output, setOutput] = useState('');
 
     const prevTo = useRef(to);
 
     const handleTranslate = async () => {
-
         console.log(cap);
 
         if (to === "en") {
             callback(cap);
-        }
-
-        else {
-            const url = "https://rapid-translate.p.rapidapi.com/TranslateText";
+        } else {
+            const url = "https://rapid-translate-multi-traduction.p.rapidapi.com/t";
             const fetchOptions = {
                 method: "POST",
                 headers: {
-                    "content-type": "application/json",
-                    "X-RapidAPI-Key":
-                        "6f6d882d6dmshb61682053181adap12ae69jsne6baf7d12825",
-                    "X-RapidAPI-Host": "rapid-translate.p.rapidapi.com"
+                    "Content-Type": "application/json",
+                    "x-rapidapi-key": "dfd25b0543msh7af6bd51c53d916p1b8dcbjsn1940f66295f5",
+                    "x-rapidapi-host": "rapid-translate-multi-traduction.p.rapidapi.com"
                 },
-                // body: new URLSearchParams({
-                //     from: "en",
-                //     to: to,
-                //     text: cap
-                // })
                 body: JSON.stringify({
-                    from: "en",
-                    text: cap,
-                    to: to
+                    from: "en",    // Source language (can be dynamic if needed)
+                    to: to,        // Target language selected by user
+                    q: cap         // Text to be translated
                 })
             };
 
             try {
                 const response = await fetch(url, fetchOptions);
                 const result = await response.json();
-                // setCap(result.translated_text);
-                callback(result.result);
-                console.log(result);
+
+                // Log the full response to see its structure
+                console.log("API Response:", result);
+
+                // The response seems to contain an array directly, so we access it accordingly
+                if (Array.isArray(result) && result.length > 0) {
+                    callback(result[0]);  // Extract the translated text directly from the array
+                } else {
+                    console.error("No translations found in the response.");
+                }
             } catch (error) {
-                console.error(error);
+                console.error("Error during translation:", error);
             }
         }
     };
@@ -75,7 +67,7 @@ const TransButton = ({ callback, cap }) => {
 
     return (
         <>
-            <div style={{margin:"14px 2px", marginLeft:"157px"}}>
+            <div style={{ margin: "14px 2px", marginLeft: "157px" }}>
                 <select onChange={handleLanguageChange}>
                     {languageOptions.map((opt) => (
                         <option key={opt.code} value={opt.code}>
@@ -85,10 +77,12 @@ const TransButton = ({ callback, cap }) => {
                 </select>
             </div>
             <div>
-                <button className="translate-btn" onClick={handleTranslate}>Translate</button>
+                <button className="translate-btn" onClick={handleTranslate}>
+                    Translate
+                </button>
             </div>
         </>
-    )
-}
+    );
+};
 
-export default TransButton
+export default TransButton;
